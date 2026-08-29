@@ -1,0 +1,19 @@
+services:
+  movie-grabber-api:
+    image: "{{ movie_grabber_image }}"
+    container_name: movie-grabber-api
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: "3000"
+    ports:
+      - "{{ movie_grabber_host_port }}:3000"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:3000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    security_opt:
+      - no-new-privileges:true

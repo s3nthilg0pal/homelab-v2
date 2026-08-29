@@ -1,0 +1,27 @@
+---
+- name: Deploy SenthilIndex API
+  hosts: app_servers
+  become: true
+  vars_files:
+    - ../group_vars/all/vars.yml
+    - ../group_vars/all/vault.yml
+
+  pre_tasks:
+    - name: Require encrypted SenthilIndex secrets
+      ansible.builtin.assert:
+        that:
+          - vault_senthilindex_db_user is defined
+          - vault_senthilindex_db_password is defined
+          - vault_senthilindex_api_key is defined
+        fail_msg: Add the SenthilIndex database and API credentials to the encrypted vault.
+      no_log: true
+
+  roles:
+    - common
+    - docker
+
+  tasks:
+    - name: Configure SenthilIndex API only
+      ansible.builtin.include_role:
+        name: applications
+        tasks_from: senthilindex

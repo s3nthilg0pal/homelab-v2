@@ -1,0 +1,8 @@
+# Copy and encrypt this file as documented in README.md.
+vault_gym_db_user: gym_api
+vault_gym_db_password: REPLACE_WITH_GYM_PASSWORD
+vault_gym_api_key: REPLACE_WITH_GYM_API_KEY
+
+vault_senthilindex_db_user: senthilindex_api
+vault_senthilindex_db_password: REPLACE_WITH_SENTHILINDEX_PASSWORD
+vault_senthilindex_api_key: REPLACE_WITH_SENTHILINDEX_API_KEY

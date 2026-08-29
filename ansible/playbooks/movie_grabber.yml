@@ -1,0 +1,16 @@
+---
+- name: Deploy Movie Grabber API
+  hosts: app_servers
+  become: true
+  vars_files:
+    - ../group_vars/all/vars.yml
+
+  roles:
+    - common
+    - docker
+
+  tasks:
+    - name: Configure Movie Grabber API only
+      ansible.builtin.include_role:
+        name: applications
+        tasks_from: movie_grabber

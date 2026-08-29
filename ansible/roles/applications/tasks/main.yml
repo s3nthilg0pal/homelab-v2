@@ -1,0 +1,9 @@
+---
+- name: Configure Gym API
+  ansible.builtin.import_tasks: gym.yml
+
+- name: Configure SenthilIndex API
+  ansible.builtin.import_tasks: senthilindex.yml
+
+- name: Configure Movie Grabber API
+  ansible.builtin.import_tasks: movie_grabber.yml

@@ -1,0 +1,14 @@
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+terraform.tfvars
+.terraform.lock.hcl.backup
+ansible/.vault-password
+ansible/group_vars/all/vault.yml
+*.retry
+.env
+*.dump
+*.sql
+*.sql.gz
+

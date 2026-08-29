@@ -1,0 +1,16 @@
+timezone: Pacific/Auckland
+postgres_host: 192.168.0.89
+postgres_port: 5432
+
+apps_root: /srv/apps
+
+gym_image: ghcr.io/s3nthilg0pal/gym-api:main
+gym_host_port: 8080
+
+senthilindex_image: ghcr.io/s3nthilg0pal/senthil-api:8f1da1d1b8d756300cefec02110f8094a4badeac
+senthilindex_host_port: 8081
+senthilindex_ollama_endpoint: http://192.168.0.163:11434
+senthilindex_ollama_model: qwen3.5:2b
+
+movie_grabber_image: ghcr.io/s3nthilg0pal/movie-grabber:main
+movie_grabber_host_port: 8082

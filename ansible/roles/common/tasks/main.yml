@@ -1,0 +1,25 @@
+---
+- name: Configure timezone
+  community.general.timezone:
+    name: "{{ timezone }}"
+
+- name: Upgrade installed packages
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: dist
+    cache_valid_time: 3600
+
+- name: Install base packages
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - curl
+      - qemu-guest-agent
+      - unattended-upgrades
+    state: present
+
+- name: Start QEMU guest agent
+  ansible.builtin.service:
+    name: qemu-guest-agent
+    state: started
+

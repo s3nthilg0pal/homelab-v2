@@ -1,0 +1,20 @@
+---
+- name: Create Movie Grabber API directory
+  ansible.builtin.file:
+    path: "{{ apps_root }}/movie-grabber"
+    state: directory
+    owner: senthil
+    group: docker
+    mode: "0750"
+
+- name: Install Movie Grabber Compose definition
+  ansible.builtin.template:
+    src: movie-grabber-compose.yml.j2
+    dest: "{{ apps_root }}/movie-grabber/compose.yml"
+    owner: senthil
+    group: docker
+    mode: "0640"
+  notify: Deploy Movie Grabber API
+
+- name: Deploy changed Movie Grabber API now
+  ansible.builtin.meta: flush_handlers

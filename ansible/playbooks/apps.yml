@@ -1,0 +1,23 @@
+---
+- name: Configure API servers
+  hosts: app_servers
+  become: true
+  vars_files:
+    - ../group_vars/all/vars.yml
+    - ../group_vars/all/vault.yml
+
+  pre_tasks:
+    - name: Require encrypted application secrets
+      ansible.builtin.assert:
+        that:
+          - vault_gym_db_password is defined
+          - vault_gym_api_key is defined
+          - vault_senthilindex_db_password is defined
+          - vault_senthilindex_api_key is defined
+        fail_msg: Create and encrypt ansible/group_vars/all/vault.yml first.
+      no_log: true
+
+  roles:
+    - common
+    - docker
+    - applications

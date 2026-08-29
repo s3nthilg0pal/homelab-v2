@@ -1,0 +1,4 @@
+[tools]
+ansible-core = "latest"
+python = "latest"
+terraform = "latest"

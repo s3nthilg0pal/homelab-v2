@@ -1,0 +1,27 @@
+---
+- name: Deploy Gym API
+  hosts: app_servers
+  become: true
+  vars_files:
+    - ../group_vars/all/vars.yml
+    - ../group_vars/all/vault.yml
+
+  pre_tasks:
+    - name: Require encrypted Gym secrets
+      ansible.builtin.assert:
+        that:
+          - vault_gym_db_user is defined
+          - vault_gym_db_password is defined
+          - vault_gym_api_key is defined
+        fail_msg: Create and encrypt ansible/group_vars/all/vault.yml first.
+      no_log: true
+
+  roles:
+    - common
+    - docker
+
+  tasks:
+    - name: Configure Gym API only
+      ansible.builtin.include_role:
+        name: applications
+        tasks_from: gym

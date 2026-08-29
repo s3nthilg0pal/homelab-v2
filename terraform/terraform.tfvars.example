@@ -1,0 +1,14 @@
+proxmox_endpoint  = "https://192.168.0.244:8006/"
+proxmox_node_name = "pve1" # Change to the exact node name in the Proxmox UI.
+
+apps_vm = {
+  vm_id       = 101
+  name        = "apps01"
+  address     = "192.168.0.90/24"
+  gateway     = "192.168.0.1"
+  dns_servers = ["192.168.0.1"]
+  cores       = 2
+  memory_mb   = 4096
+  disk_gb     = 40
+}
+
