@@ -1,4 +1,5 @@
 [tools]
 ansible-core = "latest"
+pipx = "latest"
 python = "latest"
 terraform = "latest"

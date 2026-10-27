@@ -1,0 +1,11 @@
+---
+- name: Pull and deploy the latest Gym API image
+  hosts: app_servers
+  become: true
+
+  tasks:
+    - name: Pull and restart Gym API
+      community.docker.docker_compose_v2:
+        project_src: /srv/apps/gym-api
+        pull: always
+        state: present

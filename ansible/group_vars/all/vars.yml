@@ -1,5 +1,5 @@
 timezone: Pacific/Auckland
-postgres_host: 192.168.0.89
+postgres_host: 192.168.0.74
 postgres_port: 5432
 
 apps_root: /srv/apps
